@@ -93,3 +93,4 @@ router.route('/comments/:comment_id')
     })
     .delete(function(req, res) {
         Comment.delete
+    }
