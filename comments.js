@@ -1,24 +1,18 @@
-// create web server with express
-const express = require("express");
-const router = express.Router();
-// create comment controller
-const commentController = require("../controllers/comments_controller");
-// create authentication controller
-const passport = require("passport");
-// create post controller
-const postController = require("../controllers/posts_controller");
+// create web server 
+// create a route to get all comments
+// create a route to get one comment
+// create a route to create a comment
+// create a route to update a comment
+// create a route to delete a comment
 
-// create comment route
-router.post(
-  "/create",
-  passport.checkAuthentication,
-  commentController.create
-);
-// create comment destroy route
-router.get(
-  "/destroy/:id",
-  passport.checkAuthentication,
-  commentController.destroy
-);
+const express = require('express');
+const router = express.Router();
+const commentController = require('../controllers/commentController');
+
+router.get('/', commentController.getAllComments);
+router.get('/:id', commentController.getOneComment);
+router.post('/', commentController.createComment);
+router.put('/:id', commentController.updateComment);
+router.delete('/:id', commentController.deleteComment);
 
 module.exports = router;
